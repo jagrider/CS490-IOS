@@ -34,7 +34,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Getting used to Xcode and its complexity was difficult at first. A good amount of time was spent on learning how to modify the navigation area for Dark Mode.
 
 ## License
 
