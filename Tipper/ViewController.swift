@@ -139,6 +139,7 @@ class ViewController: UIViewController {
             self.navigationController?.navigationBar.shadowImage = UIImage()
             self.navigationController?.navigationBar.barTintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+            self.navigationController?.navigationBar.barStyle = .black
             
         } else {
             
@@ -160,6 +161,7 @@ class ViewController: UIViewController {
             self.navigationController?.navigationBar.shadowImage = UIImage()
             self.navigationController?.navigationBar.barTintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black]
+            self.navigationController?.navigationBar.barStyle = .default
             
         }
         
