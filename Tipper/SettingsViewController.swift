@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController {
         switchColorMode(self)
         
         // Obtain default tip amount & update controller
+        
         tipSegmentController.selectedSegmentIndex = userDefaults.integer(forKey: "tipIndex")
         
         tipSegmentController.isEnabled = true
