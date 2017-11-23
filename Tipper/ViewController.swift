@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipControl: UISegmentedControl!
-
+    @IBOutlet weak var tipTotalView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,9 @@ class ViewController: UIViewController {
         if (oldTime.timeIntervalSinceNow <= 600 && oldBill != 0) {
             billField.text = String(format: "%.2f", oldBill)
         }
+        
+        // Set the tip & total view to be invisible
+        tipTotalView.alpha = 0
         
         // Update the colors
         updateColors()
@@ -99,6 +103,15 @@ class ViewController: UIViewController {
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
+        // Animate tip and total views
+        UIView.animate(withDuration: 0.4, animations:{
+            if (self.billField.text!.isEmpty) {
+                self.tipTotalView.alpha = 0
+            } else {
+                self.tipTotalView.alpha = 1
+            }
+        });
+        
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
 //        billField.text = "$" + String(describing: Double(billField.text!) ?? 0)
@@ -112,7 +125,7 @@ class ViewController: UIViewController {
         if isDark {
             
             tipTextLabel.textColor = .white
-            tipLabel.textColor = .white
+//            tipLabel.textColor = .white
             totalTextLabel.textColor = .white
             totalLabel.textColor = .white
             billField.textColor = .white
@@ -121,6 +134,7 @@ class ViewController: UIViewController {
             billField.tintColor = .lightGray
             billField.textColor = .white
             billField.keyboardAppearance = UIKeyboardAppearance.dark
+            tipTotalView.backgroundColor = .black
             self.view.backgroundColor = .black
             
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -132,7 +146,7 @@ class ViewController: UIViewController {
             
             //billLabel.textColor = .black
             tipTextLabel.textColor = .black
-            tipLabel.textColor = .black
+//            tipLabel.textColor = .black
             totalTextLabel.textColor = .black
             totalLabel.textColor = .black
             billField.textColor = .black
@@ -140,6 +154,7 @@ class ViewController: UIViewController {
             billField.backgroundColor = .white
             billField.textColor = .black
             billField.keyboardAppearance = UIKeyboardAppearance.light
+            tipTotalView.backgroundColor = .white
             self.view.backgroundColor = .white
             
             /* update navbar */
