@@ -27,17 +27,13 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Load user defaults
-        
         // See if dark mode is enabled, update switch as needed
         let isDark = userDefaults.bool(forKey: "darkMode")
         isDark ? colorSwitch.setOn(true, animated: false) : colorSwitch.setOn(false, animated: false)
         switchColorMode(self)
         
-        // Obtain default tip amount & update controller
-        
+        // Update segment controller for default tips
         tipSegmentController.selectedSegmentIndex = userDefaults.integer(forKey: "tipIndex")
-        
         tipSegmentController.isEnabled = true
         tipSegmentController.tintColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.0)
         
@@ -92,10 +88,6 @@ class SettingsViewController: UIViewController {
             
             
         }
-        
-//        // Synchronize updated user defaults
-//        userDefaults.synchronize()
-        
     }
 
     @IBAction func updateDefaultTip(_ sender: Any) {

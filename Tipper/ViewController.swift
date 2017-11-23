@@ -9,6 +9,7 @@
 import UIKit
 
 let defaults = UserDefaults.standard
+let tipPercentages = [0.15, 0.2, 0.25]
 
 class ViewController: UIViewController {
 
@@ -27,18 +28,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Update default tips
-        updateDefaultTips()
+        updateToDefaultTips()
         
         // Update the amount if within 10 minutes of last opening
         let oldBill = defaults.double(forKey: "bill")
         var oldTime = NSDate.init()
-        
         if (defaults.object(forKey: "time") != nil) {
             oldTime = defaults.object(forKey: "time") as! NSDate
-        }
-        
-        if (oldTime.timeIntervalSinceNow <= 600 && oldBill != 0) {
-            billField.text = String(format: "%.2f", oldBill)
+            
+            if (oldTime.timeIntervalSinceNow <= 600 && oldBill != 0) {
+                billField.text = String(format: "%.2f", oldBill)
+            }
         }
         
         // Set the tip & total view to be invisible
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         updateColors()
         
         // Update tip controller & calculate tip
-        updateDefaultTips()
+        updateToDefaultTips()
         calculateTip(self)
         
         // Bring up the keyboard right away
@@ -93,12 +93,10 @@ class ViewController: UIViewController {
     
     @IBAction func calculateTip(_ sender: Any) {
         
+        // Update the most recent bill value
         defaults.set(Double(billField.text!) ?? 0, forKey: "bill")
         
-        //updateColors()
-        
-        let tipPercentages = [0.15, 0.2, 0.25]
-        
+        // Compute the tip and total
         let bill = Double(billField.text!) ?? 0
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
@@ -112,9 +110,9 @@ class ViewController: UIViewController {
             }
         });
         
+        // Update the tip and total labels
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
-//        billField.text = "$" + String(describing: Double(billField.text!) ?? 0)
         
     }
     
@@ -124,12 +122,12 @@ class ViewController: UIViewController {
         
         if isDark {
             
+            //tipLabel.textColor = .white
+            
             tipTextLabel.textColor = .white
-//            tipLabel.textColor = .white
             totalTextLabel.textColor = .white
             totalLabel.textColor = .white
             billField.textColor = .white
-//            billField.backgroundColor = UIColor(red:0.16, green:0.16, blue:0.16, alpha:1.0)
             billField.backgroundColor = .black
             billField.tintColor = .lightGray
             billField.textColor = .white
@@ -145,12 +143,12 @@ class ViewController: UIViewController {
         } else {
             
             //billLabel.textColor = .black
+            //tipLabel.textColor = .black
+            
             tipTextLabel.textColor = .black
-//            tipLabel.textColor = .black
             totalTextLabel.textColor = .black
             totalLabel.textColor = .black
             billField.textColor = .black
-//            billField.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
             billField.backgroundColor = .white
             billField.textColor = .black
             billField.keyboardAppearance = UIKeyboardAppearance.light
@@ -166,7 +164,10 @@ class ViewController: UIViewController {
         }
         
     }
-    func updateDefaultTips() {
+    
+    func updateToDefaultTips() {
+        
+        // Update the default tip selector
         let tipIndex = defaults.integer(forKey: "tipIndex")
         tipControl.selectedSegmentIndex = tipIndex
     }
