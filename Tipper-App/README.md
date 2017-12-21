@@ -23,6 +23,7 @@ The following **additional** features are implemented:
 
 - [X] Settings switch to toggle Dark Mode
 - [X] App icon
+- [X] Auto-layout enabled to support iPhone 4S and up
 
 ## Video Walkthrough
 
