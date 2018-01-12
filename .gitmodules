@@ -1,0 +1,3 @@
+[submodule "Tumblr"]
+	path = Tumblr
+	url = https://github.com/jagrider/Tumblr
