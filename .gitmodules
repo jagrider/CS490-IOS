@@ -1,3 +1,6 @@
 [submodule "Tumblr"]
 	path = Tumblr
 	url = https://github.com/jagrider/Tumblr
+[submodule "Flix"]
+	path = Flix
+	url = https://github.com/jagrider/Flix.git
