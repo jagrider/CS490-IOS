@@ -7,3 +7,21 @@
 [submodule "Yelp"]
 	path = Yelp
 	url = https://github.com/jagrider/Yelp
+[submodule "Tinder"]
+	path = Tinder
+	url = https://github.com/jagrider/Tinder
+[submodule "Stickers"]
+	path = Stickers
+	url = https://github.com/jagrider/Stickers
+[submodule "Chirp"]
+	path = Chirp
+	url = https://github.com/jagrider/Chirp
+[submodule "PhotoMap"]
+	path = PhotoMap
+	url = https://github.com/jagrider/PhotoMap
+[submodule "Instagram"]
+	path = Instagram
+	url = https://github.com/jagrider/Instagram
+[submodule "ParseChat"]
+	path = ParseChat
+	url = https://github.com/jagrider/ParseChat
